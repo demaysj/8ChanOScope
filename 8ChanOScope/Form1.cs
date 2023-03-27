@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml.Schema;
 using NationalInstruments.DAQmx;
 using NationalInstruments.Restricted;
 
@@ -23,6 +24,8 @@ namespace _8ChanOScope
 
         double rangeMinimum = -10;
         double rangeMaximum = 10;
+
+        double timeint;
 
         public Form1()
         {
@@ -226,7 +229,7 @@ namespace _8ChanOScope
 
             double[] timedat = new double[(int)nudSamNum.Value];
 
-            double timeint = ((double)(1 / nudSamRate.Value));
+            timeint = ((double)(1 / nudSamRate.Value));
 
             for (int k = 0; k < (int)nudSamNum.Value-1; k++)
             {
@@ -264,6 +267,178 @@ namespace _8ChanOScope
         private void btnClr_Click(object sender, EventArgs e)
         {
             ClearGraph();
+        }
+
+        private void mnuQuit_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void mnuHelpSel_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("This program collects analog input samples using an NI DAQ board. " +
+                "The program will collect an inputted number of samples at a user defined rate." +
+                "The user can then save the data as a CSV to a currently existing or new file.", "Help", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void mnuSaveNew_Click(object sender, EventArgs e)
+        {
+            string fileName;
+
+            string[] output = new string[data.Length/(int)(nudHiChan.Value - nudLoChan.Value+1) + 4];
+
+            string datetime = Convert.ToString(DateTime.Now);
+
+
+
+            output[0] = "date, " + DateTime.Now.ToString("d");
+            output[1] = "time, " + DateTime.Now.ToString("T");
+            output[2] = "# data points, " + Convert.ToString(data.Length);
+            output[3] = "elapsed time";
+            
+            for(int i = 0; i <= nudHiChan.Value - nudLoChan.Value; i++)
+            {
+                output[3] = output[3] + ", " + "ch" + i;  
+            }
+
+            for(int i = 4; i < output.Length; i++)
+            {
+                output[i] = Convert.ToString((i-4) * timeint);
+            }
+
+            for(int i = 4; i < output.Length; i++)
+            {
+                for (int j = 0; j <= nudHiChan.Value - nudLoChan.Value; j++)
+                {
+                    output[i] = output[i] + ", " + Convert.ToString(data[j, i-4]); 
+                }
+            }
+
+
+            saveFD.InitialDirectory = "C:\\Users\\demaysj\\Documents";
+            saveFD.Title = "Save to CSV";
+            saveFD.FileName = "";
+            saveFD.Filter = "CSV|*.csv";
+
+            if(saveFD.ShowDialog() != DialogResult.Cancel)
+            {
+                fileName = saveFD.FileName;
+
+                System.IO.StreamWriter objWriter = new System.IO.StreamWriter(saveFD.FileName);
+
+                for(int i = 0; i < output.Length; i++)
+                {
+                    objWriter.WriteLine(output[i]);
+                }
+
+                objWriter.Close();
+
+            }
+
+
+        }
+
+        private void mnuSaveAppend_Click(object sender, EventArgs e)
+        {
+            string fileName;
+
+            string[] output = new string[data.Length / (int)(nudHiChan.Value - nudLoChan.Value + 1) + 4];
+
+            string datetime = Convert.ToString(DateTime.Now);
+
+
+
+            output[0] = "date, " + DateTime.Now.ToString("d");
+            output[1] = "time, " + DateTime.Now.ToString("T");
+            output[2] = "# data points, " + Convert.ToString(data.Length);
+            output[3] = "elapsed time";
+
+            for (int i = 0; i <= nudHiChan.Value - nudLoChan.Value; i++)
+            {
+                output[3] = output[3] + ", " + "ch" + i;
+            }
+
+            for (int i = 4; i < output.Length; i++)
+            {
+                output[i] = Convert.ToString((i-4) * timeint);
+            }
+
+            for (int i = 4; i < output.Length; i++)
+            {
+                for (int j = 0; j <= nudHiChan.Value - nudLoChan.Value; j++)
+                {
+                    output[i] = output[i] + ", " + Convert.ToString(data[j, i - 4]);
+                }
+            }
+
+
+            saveFD.InitialDirectory = "C:\\Users\\demaysj\\Documents";
+            saveFD.Title = "Save to CSV";
+            saveFD.FileName = "";
+            saveFD.Filter = "CSV|*.csv";
+
+            if (saveFD.ShowDialog() != DialogResult.Cancel)
+            {
+                fileName = saveFD.FileName;
+
+                System.IO.StreamWriter objWriter = new System.IO.StreamWriter(saveFD.FileName, true);
+
+                for (int i = 0; i < output.Length; i++)
+                {
+                    objWriter.WriteLine(output[i]);
+                }
+
+                objWriter.Close();
+
+            }
+        }
+
+        private void mnuOpen_Click(object sender, EventArgs e)
+        {
+            string fileName;
+            string textline = "";
+            int len = 0;
+
+
+
+            openFD.InitialDirectory = "C:\\Users\\demaysj\\Documents";
+            openFD.Title = "Open a CSV";
+            openFD.FileName = "";
+            openFD.Filter = "CSV|*.csv";
+
+            if (openFD.ShowDialog() != DialogResult.Cancel)
+            {
+                fileName = openFD.FileName;
+                System.IO.StreamReader objReader = new System.IO.StreamReader(openFD.FileName);
+
+                do
+                {
+                    textline = textline + objReader.ReadLine() + "\r\n";
+                    len++;
+                }
+                while (objReader.Peek() != -1);
+
+                string input;
+                string[] alteredinput;
+                string[,] data;
+                int i = 0;
+                do
+                {
+                    input = objReader.ReadLine();
+                    alteredinput = input.Split(',');
+
+                    for(int j = 0; j < alteredinput.Length; j++)
+                    {
+                        
+                    }
+                    i++;
+                }
+                while (objReader.Peek() != -1);
+
+
+
+                objReader.Close();
+            }
         }
     }
 }

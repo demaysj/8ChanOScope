@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Title title1 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.Title title2 = new System.Windows.Forms.DataVisualization.Charting.Title();
-            System.Windows.Forms.DataVisualization.Charting.Title title3 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Title title7 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.Title title8 = new System.Windows.Forms.DataVisualization.Charting.Title();
+            System.Windows.Forms.DataVisualization.Charting.Title title9 = new System.Windows.Forms.DataVisualization.Charting.Title();
             this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.gbConfig = new System.Windows.Forms.GroupBox();
             this.lblAD = new System.Windows.Forms.Label();
@@ -57,41 +58,58 @@
             this.cbTermCon = new System.Windows.Forms.ComboBox();
             this.cbVoltRng = new System.Windows.Forms.ComboBox();
             this.cbDevice = new System.Windows.Forms.ComboBox();
+            this.mnuStrip = new System.Windows.Forms.MenuStrip();
+            this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuOpen = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuSave = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuSaveNew = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuSaveAppend = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuQuit = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuAcquire = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuStart = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuClear = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuHelp = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuHelpSel = new System.Windows.Forms.ToolStripMenuItem();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.openFD = new System.Windows.Forms.OpenFileDialog();
+            this.saveFD = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.gbConfig.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudSamNum)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudHiChan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudLoChan)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudSamRate)).BeginInit();
+            this.mnuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // chart1
             // 
-            chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
+            chartArea3.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.chart1.Legends.Add(legend3);
             this.chart1.Location = new System.Drawing.Point(439, 19);
             this.chart1.Name = "chart1";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
+            series3.ChartArea = "ChartArea1";
+            series3.Legend = "Legend1";
+            series3.Name = "Series1";
+            this.chart1.Series.Add(series3);
             this.chart1.Size = new System.Drawing.Size(561, 408);
             this.chart1.TabIndex = 0;
-            title1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
-            title1.ForeColor = System.Drawing.Color.IndianRed;
-            title1.Name = "Title1";
-            title1.Text = "Voltage vs. Time";
-            title2.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
-            title2.Name = "xTitle";
-            title2.Text = "Time (s)";
-            title3.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Left;
-            title3.Name = "yTitle";
-            title3.Text = "Voltage (V)";
-            this.chart1.Titles.Add(title1);
-            this.chart1.Titles.Add(title2);
-            this.chart1.Titles.Add(title3);
+            title7.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F);
+            title7.ForeColor = System.Drawing.Color.IndianRed;
+            title7.Name = "Title1";
+            title7.Text = "Voltage vs. Time";
+            title8.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Bottom;
+            title8.Name = "xTitle";
+            title8.Text = "Time (s)";
+            title9.Docking = System.Windows.Forms.DataVisualization.Charting.Docking.Left;
+            title9.Name = "yTitle";
+            title9.Text = "Voltage (V)";
+            this.chart1.Titles.Add(title7);
+            this.chart1.Titles.Add(title8);
+            this.chart1.Titles.Add(title9);
             // 
             // gbConfig
             // 
@@ -118,9 +136,9 @@
             this.gbConfig.Controls.Add(this.cbVoltRng);
             this.gbConfig.Controls.Add(this.cbDevice);
             this.gbConfig.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.gbConfig.Location = new System.Drawing.Point(12, 12);
+            this.gbConfig.Location = new System.Drawing.Point(12, 27);
             this.gbConfig.Name = "gbConfig";
-            this.gbConfig.Size = new System.Drawing.Size(414, 415);
+            this.gbConfig.Size = new System.Drawing.Size(414, 400);
             this.gbConfig.TabIndex = 1;
             this.gbConfig.TabStop = false;
             this.gbConfig.Text = "DAQ Configuration";
@@ -329,6 +347,129 @@
             this.cbDevice.Size = new System.Drawing.Size(183, 21);
             this.cbDevice.TabIndex = 0;
             // 
+            // mnuStrip
+            // 
+            this.mnuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fileToolStripMenuItem,
+            this.mnuAcquire,
+            this.mnuHelp});
+            this.mnuStrip.Location = new System.Drawing.Point(0, 0);
+            this.mnuStrip.Name = "mnuStrip";
+            this.mnuStrip.Size = new System.Drawing.Size(1012, 24);
+            this.mnuStrip.TabIndex = 2;
+            this.mnuStrip.Text = "menuStrip1";
+            // 
+            // fileToolStripMenuItem
+            // 
+            this.fileToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuOpen,
+            this.mnuSave,
+            this.toolStripMenuItem1,
+            this.mnuQuit});
+            this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(37, 20);
+            this.fileToolStripMenuItem.Text = "File";
+            // 
+            // mnuOpen
+            // 
+            this.mnuOpen.Name = "mnuOpen";
+            this.mnuOpen.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.O)));
+            this.mnuOpen.Size = new System.Drawing.Size(180, 22);
+            this.mnuOpen.Text = "&Open";
+            this.mnuOpen.Click += new System.EventHandler(this.mnuOpen_Click);
+            // 
+            // mnuSave
+            // 
+            this.mnuSave.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuSaveNew,
+            this.mnuSaveAppend});
+            this.mnuSave.Name = "mnuSave";
+            this.mnuSave.Size = new System.Drawing.Size(180, 22);
+            this.mnuSave.Text = "&Save";
+            // 
+            // mnuSaveNew
+            // 
+            this.mnuSaveNew.Name = "mnuSaveNew";
+            this.mnuSaveNew.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.N)));
+            this.mnuSaveNew.Size = new System.Drawing.Size(190, 22);
+            this.mnuSaveNew.Text = "New";
+            this.mnuSaveNew.Click += new System.EventHandler(this.mnuSaveNew_Click);
+            // 
+            // mnuSaveAppend
+            // 
+            this.mnuSaveAppend.Name = "mnuSaveAppend";
+            this.mnuSaveAppend.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.A)));
+            this.mnuSaveAppend.Size = new System.Drawing.Size(190, 22);
+            this.mnuSaveAppend.Text = "Append";
+            this.mnuSaveAppend.Click += new System.EventHandler(this.mnuSaveAppend_Click);
+            // 
+            // toolStripMenuItem1
+            // 
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(177, 6);
+            // 
+            // mnuQuit
+            // 
+            this.mnuQuit.Name = "mnuQuit";
+            this.mnuQuit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Q)));
+            this.mnuQuit.Size = new System.Drawing.Size(180, 22);
+            this.mnuQuit.Text = "Quit";
+            this.mnuQuit.Click += new System.EventHandler(this.mnuQuit_Click);
+            // 
+            // mnuAcquire
+            // 
+            this.mnuAcquire.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuStart,
+            this.mnuClear});
+            this.mnuAcquire.Name = "mnuAcquire";
+            this.mnuAcquire.Size = new System.Drawing.Size(60, 20);
+            this.mnuAcquire.Text = "Acquire";
+            // 
+            // mnuStart
+            // 
+            this.mnuStart.Name = "mnuStart";
+            this.mnuStart.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.S)));
+            this.mnuStart.Size = new System.Drawing.Size(197, 22);
+            this.mnuStart.Text = "&Start Acquisition";
+            this.mnuStart.Click += new System.EventHandler(this.btnAcquire_Click);
+            // 
+            // mnuClear
+            // 
+            this.mnuClear.Name = "mnuClear";
+            this.mnuClear.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.C)));
+            this.mnuClear.Size = new System.Drawing.Size(197, 22);
+            this.mnuClear.Text = "&Clear Chart";
+            this.mnuClear.Click += new System.EventHandler(this.btnClr_Click);
+            // 
+            // mnuHelp
+            // 
+            this.mnuHelp.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuHelpSel});
+            this.mnuHelp.Name = "mnuHelp";
+            this.mnuHelp.Size = new System.Drawing.Size(44, 20);
+            this.mnuHelp.Text = "Help";
+            // 
+            // mnuHelpSel
+            // 
+            this.mnuHelpSel.Name = "mnuHelpSel";
+            this.mnuHelpSel.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
+            | System.Windows.Forms.Keys.H)));
+            this.mnuHelpSel.Size = new System.Drawing.Size(180, 22);
+            this.mnuHelpSel.Text = "&Help";
+            this.mnuHelpSel.Click += new System.EventHandler(this.mnuHelpSel_Click);
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            // 
+            // openFD
+            // 
+            this.openFD.FileName = "openFileDialog1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -337,6 +478,8 @@
             this.ClientSize = new System.Drawing.Size(1012, 438);
             this.Controls.Add(this.gbConfig);
             this.Controls.Add(this.chart1);
+            this.Controls.Add(this.mnuStrip);
+            this.MainMenuStrip = this.mnuStrip;
             this.Name = "Form1";
             this.Text = "Form1";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
@@ -348,7 +491,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudHiChan)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudLoChan)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudSamRate)).EndInit();
+            this.mnuStrip.ResumeLayout(false);
+            this.mnuStrip.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -377,6 +523,22 @@
         private System.Windows.Forms.Label lblChanRng;
         private System.Windows.Forms.Label lblSamNum;
         private System.Windows.Forms.NumericUpDown nudSamNum;
+        private System.Windows.Forms.MenuStrip mnuStrip;
+        private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuOpen;
+        private System.Windows.Forms.ToolStripMenuItem mnuSave;
+        private System.Windows.Forms.ToolStripMenuItem mnuSaveNew;
+        private System.Windows.Forms.ToolStripMenuItem mnuSaveAppend;
+        private System.Windows.Forms.ToolStripMenuItem mnuAcquire;
+        private System.Windows.Forms.ToolStripMenuItem mnuStart;
+        private System.Windows.Forms.ToolStripMenuItem mnuClear;
+        private System.Windows.Forms.ToolStripMenuItem mnuHelp;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripSeparator toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem mnuQuit;
+        private System.Windows.Forms.ToolStripMenuItem mnuHelpSel;
+        private System.Windows.Forms.OpenFileDialog openFD;
+        private System.Windows.Forms.SaveFileDialog saveFD;
     }
 }
 
